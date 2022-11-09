@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("api/admin/", admin.site.urls),
     path("api/redoc-tasks/", include("redoc.urls")),
-    path("", include('ads.urls')),
-    path("", include('users.urls')),
+    path("api/", include('ads.urls')),
+    path("api/", include('users.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

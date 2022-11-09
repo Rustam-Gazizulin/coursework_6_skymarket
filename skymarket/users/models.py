@@ -5,9 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 
 
-
-
-
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=5, choices=UserRoles.choices, default=UserRoles.USER)
@@ -15,7 +12,7 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=100)
     phone = PhoneNumberField()
     is_active = models.BooleanField(default=False)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='media/')
 
     objects = UserManager()
 
@@ -24,7 +21,7 @@ class User(AbstractBaseUser):
 
     # эта константа содержит список с полями, 
     # которые необходимо заполнить при создании пользователя
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', "role"] 
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', "role", 'image']
 
     @property
     def is_admin(self):

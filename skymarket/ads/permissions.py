@@ -1,1 +1,4 @@
-# TODO здесь производится настройка пермишенов для нашего проекта
+from rest_framework import permissions
+
+
+
