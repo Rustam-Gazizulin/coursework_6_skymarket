@@ -42,6 +42,7 @@ class UserManager(BaseUserManager):
             phone=phone,
             password=password,
             role=role,
+
         )
 
         user.save(using=self._db)

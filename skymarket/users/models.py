@@ -8,11 +8,11 @@ from django.utils.translation import gettext_lazy as _
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=5, choices=UserRoles.choices, default=UserRoles.USER)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    phone = PhoneNumberField()
+    first_name = models.CharField(max_length=100, verbose_name='Имя')
+    last_name = models.CharField(max_length=100, verbose_name='Фамилия')
+    phone = PhoneNumberField(verbose_name='Телефон')
     is_active = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='media/')
+    image = models.ImageField(verbose_name='Аватар', null=True, blank=True)
 
     objects = UserManager()
 
@@ -21,7 +21,7 @@ class User(AbstractBaseUser):
 
     # эта константа содержит список с полями, 
     # которые необходимо заполнить при создании пользователя
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', "role", 'image']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', "role"]
 
     @property
     def is_admin(self):
