@@ -23,7 +23,7 @@ services:
   nginx:
     image: nginx:1.19.3
     ports:
-      - "8000:8000"
+      - "8080:8080"
       - "3000:3000"
     volumes:
       - ../skymarket/django_static/:/usr/share/nginx/html/django_static/
