@@ -6,7 +6,7 @@ from .models import Ad, Comment
 class AdSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ad
-        fields = []
+        fields = ('pk', 'title', 'price', 'author')
 
 
 class AdDetailSerializer(serializers.ModelSerializer):
@@ -14,12 +14,22 @@ class AdDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ad
-        fields = '__all__'
+        fields = ('pk', 'title', 'price', 'author', 'author_first_name',)
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    author_id = serializers.IntegerField(source='author.id', read_only=True)
+    ad_id = serializers.IntegerField(source='ad.id', read_only=True)
+    author_first_name = serializers.CharField(source='author.first_name', read_only=True)
+    author_last_name = serializers.CharField(source='author.last_name', read_only=True)
+    author_image = serializers.ImageField(source='author.image', read_only=True)
 
     class Meta:
         model = Comment
-        fields = '__all__'
-
+        fields = ('pk',
+                  'text',
+                  'author_id',
+                  'ad_id',
+                  'author_first_name',
+                  'author_last_name',
+                  'author_image',)
