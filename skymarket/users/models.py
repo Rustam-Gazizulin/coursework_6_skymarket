@@ -30,6 +30,14 @@ class User(AbstractBaseUser):
     @property
     def is_user(self):
         return self.role == UserRoles.USER
+    
+    @property
+    def is_superuser(self):
+        return self.is_admin
+    
+    @property
+    def is_staff(self):
+        return self.is_admin
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
