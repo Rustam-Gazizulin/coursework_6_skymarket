@@ -96,7 +96,8 @@ DJOSER = {
         'user': 'users.serializers.CurrentUserSerializer',
         'current_user': 'users.serializers.CurrentUserSerializer',
     },
-    'LOGIN_FIELD': 'email'
+    'LOGIN_FIELD': 'email',
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
 }
 
 # Database
@@ -168,10 +169,12 @@ AUTH_USER_MODEL = 'users.User'
 
 # Include Email Backend
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
-EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = os.environ.get("EMAIL_PORT")
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'rgazizulin@internet.ru'
+DEFAULT_FROM_EMAIL = 'rgazizulin@internet.ru'
+EMAIL_HOST_PASSWORD ='XZcadqdhf3Jww0Q4revq'
 
 DOMAIN = 'localhost:3000'
