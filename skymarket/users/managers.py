@@ -31,7 +31,7 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, first_name, last_name, phone, role=UserRoles.ADMIN, password=None):
         """
-        Функция для создания суперпользователя — с ее помощью мы создаем админинстратора
+        Функция для создания суперпользователя — с ее помощью мы создаем администратора
         это можно сделать с помощью команды createsuperuser
         """
 

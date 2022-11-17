@@ -2,7 +2,6 @@ from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 from django.db import models
 from .managers import UserManager, UserRoles
 from phonenumber_field.modelfields import PhoneNumberField
-from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractBaseUser):
@@ -39,8 +38,8 @@ class User(AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
 
-    def has_perm(self, perm, obj=None):
+    def has_perm(self):
         return self.is_admin
 
-    def has_module_perms(self, app_label):
+    def has_module_perms(self):
         return self.is_admin

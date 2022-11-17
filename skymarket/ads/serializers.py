@@ -22,14 +22,6 @@ class AdSerializer(serializers.ModelSerializer):
                   'phone',)
 
 
-# class AdDetailSerializer(serializers.ModelSerializer):
-#     author_first_name = serializers.CharField(source='author.first_name', read_only=True)
-#
-#     class Meta:
-#         model = Ad
-#         fields = ('pk', 'title', 'price', 'author', 'author_first_name',)
-
-
 class CommentSerializer(serializers.ModelSerializer):
     author_id = serializers.IntegerField(source='author.id', read_only=True)
     ad_id = serializers.IntegerField(source='ad.id', read_only=True)

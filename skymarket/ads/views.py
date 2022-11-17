@@ -32,11 +32,6 @@ class AdViewSet(viewsets.ModelViewSet):
             self.permission_classes = [permissions.IsAdminUser]
         return super().get_permissions()
 
-    # def get_serializer_class(self):
-    #     if self.action == 'retrieve':
-    #         return AdDetailSerializer
-    #     return AdSerializer
-
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
@@ -57,5 +52,3 @@ class CommentViewSet(viewsets.ModelViewSet):
         ad_instance = get_object_or_404(Ad, id=self.kwargs['ad_pk'])
         user = self.request.user
         serializer.save(author=user, ad=ad_instance)
-
-
